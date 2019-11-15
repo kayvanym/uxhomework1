@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import YearFilter from "./mycomponents/YearFilter";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -30,7 +31,7 @@ class App extends Component {
     }
 
     if (yearFrom.length === 0) {
-      yearFrom = "1751";
+      yearFrom = "1800";
     }
     if (yearTo.length === 0) {
       yearTo = "2019";
@@ -39,8 +40,8 @@ class App extends Component {
       alert("please enter a valid year.");
       return;
     }
-    if (parseInt(yearFrom) < 1751 || parseInt(yearTo) > 2019) {
-      alert("Please enter a valid year between 1751 and 2019.");
+    if (parseInt(yearFrom) < 1800 || parseInt(yearTo) > 2019) {
+      alert("Please enter a valid year between 1800 and 2019.");
       return;
     }
     if (parseInt(yearFrom) > parseInt(yearTo)) {
@@ -68,10 +69,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Global CO2 Emission</h1>
-        <Table
-          Co2Emission={this.state.filteredCo2Emission}
-          onYearFilter={this.handleYearFilter}
-        />
+        <YearFilter onYearFilter={this.handleYearFilter} />
+        <Table Co2Emission={this.state.filteredCo2Emission} />
       </div>
     );
   }
